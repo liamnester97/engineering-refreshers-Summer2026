@@ -40,11 +40,11 @@ $$
 x = \frac{13 \pm \sqrt{169 - 4}}{2} = \frac{13 \pm \sqrt{165}}{2}
 $$
 
-**Check that neither solution makes a denominator zero** ($x \neq -1$, $x \neq 2$). Both solutions are approximately $x \approx 12.92$ and $x \approx 0.077$ — neither is $-1$ or $2$.
+**Check that neither solution makes a denominator zero** ($x \neq -1$, $x \neq 2$). Both solutions are approximately $x \approx 12.92$ and $x \approx 0.077$ — neither is excluded.
 
 $$\boxed{x = \frac{13 \pm \sqrt{165}}{2}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 2
 
@@ -69,7 +69,7 @@ $$
 
 $$\boxed{x = -2,\; -1,\; 1,\; 2}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 3
 
@@ -103,7 +103,7 @@ $$
 
 $$\boxed{x = 5}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 4
 
@@ -135,7 +135,7 @@ $$
 
 $$\boxed{\frac{5x-1}{(x-1)(x+2)} = \frac{4/3}{x-1} + \frac{11/3}{x+2}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ## Limits
 
@@ -153,7 +153,7 @@ $$
 
 $$\boxed{3}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 6
 
@@ -167,13 +167,13 @@ $$
 
 $$\boxed{\dfrac{4}{7}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 7
 
 Evaluate $\displaystyle\lim_{x \to 0} \frac{e^{2x} - 1 - 2x}{x^2}$
 
-This is $\frac{0}{0}$ — apply **L'Hôpital's Rule** twice.
+This is $\dfrac{0}{0}$ form — apply **L'Hôpital's Rule** twice.
 
 **First application:**
 
@@ -189,7 +189,7 @@ $$
 
 $$\boxed{2}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ## Basic Derivatives
 
@@ -213,7 +213,7 @@ $$
 
 $$\boxed{f'(x) = 20x^4 + \frac{6}{x^3} + \frac{1}{2\sqrt{x}}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 9
 
@@ -223,19 +223,23 @@ Differentiate $f(x) = 3\sin(x) - 5\cos(x) + 2\tan(x)$
 
 $$\boxed{f'(x) = 3\cos(x) + 5\sin(x) + 2\sec^2(x)}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 10
 
 Differentiate $f(x) = e^{3x} - \ln(x^2 + 1)$
 
-**First term** — chain rule: $\dfrac{d}{dx}e^{3x} = 3e^{3x}$
+**First term** — chain rule:
 
-**Second term** — chain rule: $\dfrac{d}{dx}\ln(x^2+1) = \dfrac{2x}{x^2+1}$
+$$\frac{d}{dx}\,e^{3x} = 3e^{3x}$$
+
+**Second term** — chain rule:
+
+$$\frac{d}{dx}\,\ln(x^2+1) = \frac{2x}{x^2+1}$$
 
 $$\boxed{f'(x) = 3e^{3x} - \frac{2x}{x^2+1}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ## Chain, Product, and Quotient Rules
 
@@ -261,7 +265,7 @@ $$
 
 $$\boxed{\frac{dy}{dx} = 3x^2\ln(x) + x^2 - e^{2x}\bigl(2\sin(x) + \cos(x)\bigr)}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 12
 
@@ -275,7 +279,7 @@ $$
 
 $$\boxed{\frac{dy}{dx} = \frac{2x\sin(x) - (x^2-1)\cos(x)}{\sin^2(x)}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 13
 
@@ -297,7 +301,7 @@ $$
 
 $$\boxed{\frac{dy}{dx} = -24x\cos^2(4x^2+1)\sin(4x^2+1)}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ## Implicit Differentiation
 
@@ -321,13 +325,13 @@ $$
 
 $$\boxed{\frac{dy}{dx} = \frac{-2xy}{x^2 + 3y^2}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 15
 
 For $x^3 + y^3 = 3xy$, find $\dfrac{dy}{dx}$ and the tangent line at $\left(\dfrac{3}{2},\,\dfrac{3}{2}\right)$.
 
-*(Note: verify the point lies on the curve: $\frac{27}{8} + \frac{27}{8} = \frac{27}{4}$ and $3\cdot\frac{3}{2}\cdot\frac{3}{2} = \frac{27}{4}$ ✓)*
+*(Verify the point: $\frac{27}{8} + \frac{27}{8} = \frac{27}{4}$ and $3\cdot\frac{3}{2}\cdot\frac{3}{2} = \frac{27}{4}$ ✓)*
 
 **Differentiate both sides:**
 
@@ -338,11 +342,7 @@ $$
 **Isolate $\dfrac{dy}{dx}$:**
 
 $$
-3y^2\frac{dy}{dx} - 3x\frac{dy}{dx} = 3y - 3x^2
-$$
-
-$$
-\frac{dy}{dx} = \frac{y - x^2}{y^2 - x}
+3y^2\frac{dy}{dx} - 3x\frac{dy}{dx} = 3y - 3x^2 \implies \frac{dy}{dx} = \frac{y - x^2}{y^2 - x}
 $$
 
 **Evaluate at $\left(\frac{3}{2},\frac{3}{2}\right)$:**
@@ -359,7 +359,7 @@ $$
 
 $$\boxed{\frac{dy}{dx} = \frac{y - x^2}{y^2 - x}, \qquad \text{tangent line: } y = -x + 3}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ## Applied Optimization
 
@@ -377,7 +377,7 @@ $$
 
 Critical points: $x = 3$ and $x = -1$ — both in $[-2,\,4]$.
 
-**Evaluate $f$ at the critical points and endpoints:**
+**Evaluate $f$ at critical points and endpoints:**
 
 $$
 f(-2) = -8 - 12 + 18 + 5 = 3
@@ -397,11 +397,11 @@ $$
 
 $$\boxed{\text{Absolute maximum: } f(-1) = 10 \qquad \text{Absolute minimum: } f(3) = -22}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 17
 
-$s(t) = t^3 - 6t^2 + 9t$, $\;t \geq 0$. Find when at rest, when moving in the positive direction, and total distance on $[0,4]$.
+$s(t) = t^3 - 6t^2 + 9t$, $\;t \geq 0$.
 
 **Velocity:**
 
@@ -409,7 +409,7 @@ $$
 v(t) = s'(t) = 3t^2 - 12t + 9 = 3(t-1)(t-3)
 $$
 
-**At rest:** $v(t) = 0 \implies$ $\boxed{t = 1 \text{ and } t = 3}$
+**At rest:** $v(t) = 0 \implies t = 1$ and $t = 3$
 
 **Moving in positive direction:** $v(t) > 0$ when $t \in [0,1)$ or $t \in (3, \infty)$
 
@@ -423,9 +423,9 @@ $$
 d = |s(1) - s(0)| + |s(3) - s(1)| + |s(4) - s(3)| = 4 + 4 + 4
 $$
 
-$$\boxed{\text{Total distance} = 12 \text{ units}}$$
+$$\boxed{\text{At rest at } t = 1,\; t = 3 \qquad \text{Total distance} = 12 \text{ units}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ## Basic Integrals
 
@@ -443,7 +443,7 @@ $$
 
 $$\boxed{2x^3 - 4\ln|x| + 3e^x + C}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 19
 
@@ -455,7 +455,7 @@ $$
 
 $$\boxed{2}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 20
 
@@ -469,7 +469,7 @@ $$
 
 $$\boxed{F'(x) = \frac{2x^3}{x^4 + 1}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ## U-Substitution
 
@@ -487,7 +487,7 @@ $$
 
 $$\boxed{\ln\left|x^3 + 2x + 1\right| + C}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 22
 
@@ -503,7 +503,7 @@ $$
 
 $$\boxed{\dfrac{e-1}{2}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 23
 
@@ -517,7 +517,7 @@ $$
 
 $$\boxed{\frac{\sin^5(x)}{5} + C}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ## Integration by Parts
 
@@ -543,7 +543,7 @@ $$
 
 $$\boxed{\dfrac{\pi}{2} - 1}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 25
 
@@ -564,12 +564,12 @@ $$
 **Combine:**
 
 $$
-\int x^2 e^x\,dx = x^2 e^x - 2x\,e^x + 2e^x + C = e^x(x^2 - 2x + 2) + C
+\int x^2 e^x\,dx = x^2 e^x - 2x\,e^x + 2e^x + C
 $$
 
 $$\boxed{e^x(x^2 - 2x + 2) + C}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ## Differential Equations
 
@@ -600,12 +600,12 @@ $$
 **Solve for $y$:**
 
 $$
-y^2 = \frac{2x^3}{3} + 9 \implies y = \sqrt{\frac{2x^3}{3} + 9} \quad (y > 0)
+y^2 = \frac{2x^3}{3} + 9
 $$
 
 $$\boxed{y = \sqrt{\dfrac{2x^3}{3} + 9}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 27
 
@@ -629,7 +629,7 @@ $$
 
 $$\boxed{y = 4e^{-x} + Ce^{-2x}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 28
 
@@ -645,7 +645,7 @@ $$
 
 $$\boxed{y = C_1 e^{2x} + C_2 e^{3x}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 29
 
@@ -683,16 +683,16 @@ $$
 
 $$\boxed{y = (1 + x)e^{-2x}}$$
 
----
+<div style="page-break-before: always;"></div>
 
 ### Problem 30
 
-Salt tank mixing problem: $Q(0) = 10$ kg, volume = 100 L, flow in/out = 5 L/min (pure water in).
+Salt tank: $Q(0) = 10$ kg, volume = 100 L, flow in/out = 5 L/min (pure water in).
 
 **Set up the IVP.** The rate of salt leaving is:
 
 $$
-\text{rate out} = 5\,\frac{\text{L}}{\text{min}} \cdot \frac{Q}{100}\,\frac{\text{kg}}{\text{L}} = \frac{Q}{20}\,\frac{\text{kg}}{\text{min}}
+\text{rate out} = 5\;\frac{\text{L}}{\text{min}} \cdot \frac{Q}{100}\;\frac{\text{kg}}{\text{L}} = \frac{Q}{20}\;\frac{\text{kg}}{\text{min}}
 $$
 
 $$
@@ -720,7 +720,7 @@ $$
 **Find $t$ when $Q = 1$ kg:**
 
 $$
-1 = 10e^{-t/20} \implies e^{-t/20} = \frac{1}{10} \implies -\frac{t}{20} = -\ln(10) \implies t = 20\ln(10)
+1 = 10e^{-t/20} \implies e^{-t/20} = \frac{1}{10} \implies t = 20\ln(10)
 $$
 
-$$\boxed{Q(t) = 10e^{-t/20}\text{ kg}, \qquad t = 20\ln(10) \approx 46.1 \text{ minutes}}$$
+$$\boxed{Q(t) = 10e^{-t/20}\;\text{kg}, \qquad t = 20\ln(10) \approx 46.1\;\text{minutes}}$$
