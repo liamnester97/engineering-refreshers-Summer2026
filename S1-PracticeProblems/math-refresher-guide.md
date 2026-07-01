@@ -8,6 +8,8 @@
 
 # QUICK LOOKUP: TECHNIQUE SELECTOR
 
+*How to use this section: look at the shape of the problem in front of you, match it to a row below, and jump to the cited section for the full method and worked example. This is a diagnostic tool, not the explanation itself — think of it as "if the problem looks like X, go read section Y."*
+
 ## Which Integration Technique?
 
 | What you see | Technique | Section |
@@ -20,7 +22,17 @@
 | $e^{ax}\sin(bx)$ or similar cycling product | IBP twice (cycling) | 3.2 |
 | $\int\ln x$ or $\int\arctan x$ alone | IBP with $dv = dx$ | 3.2 |
 
+**Decoding the row descriptions:**
+- **"$f(g(x))\cdot g'(x)$ — composite with its derivative present":** the integrand is one function nested inside another ($f(g(x))$, e.g. $\sin(x^2)$), multiplied by the derivative of that inner function ($g'(x)$, e.g. $2x$). Seeing both the "outside" function and the exact derivative of the "inside" piece is the signal to try $u$-substitution — see the worked example in 3.2.
+- **"Product of unrelated functions... (LIATE)":** when two factors don't share a chain-rule relationship (e.g. $x^2 \cdot e^x$, not $x\cdot e^{x^2}$), integration by parts applies. **LIATE** is a priority order for picking which factor is $u$: **L**ogarithmic, **I**nverse trig, **A**lgebraic (polynomials), **T**rigonometric, **E**xponential — pick $u$ from whichever category comes first in that list, since it should get *simpler* when differentiated.
+- **"$\sin^m x\cos^n x$, $\tan^m x\sec^n x$":** integrands built entirely from powers of trig functions multiplying each other. The exponents $m, n$ tell you which identity to peel off (odd power → save one factor and substitute; both even → use power-reduction formulas). Full rules in 3.2.
+- **"$\sqrt{a^2-x^2}$" etc.:** whenever a square root of a sum/difference of squares shows up (and it isn't a perfect-square shortcut), a trig substitution turns the radical into a single trig function via the Pythagorean identities.
+- **"deg↑ ≥ deg↓":** shorthand for "degree of the numerator is greater than or equal to the degree of the denominator" — in that case do polynomial long division *before* setting up partial fractions, otherwise the decomposition breaks.
+- **"Cycling product":** IBP that, after being applied twice, produces the *original integral* again on the right-hand side (with a different sign/coefficient) — you then solve for it algebraically instead of integrating further. Classic example: $\int e^x\sin x\,dx$.
+
 ## Which ODE Method?
+
+*An ODE (ordinary differential equation) is "first-order" if it only involves $y$ and $y'$ (no $y''$), and "second-order" if $y''$ appears. Match the algebraic shape of your equation to a row.*
 
 | ODE form | Method | Section |
 |---|---|---|
@@ -34,7 +46,17 @@
 | IVP, need exact solution from initial conditions | Laplace transform | 5.3 |
 | System $\mathbf{x}' = A\mathbf{x}$ | Eigenvalue method | 5.4 |
 
+**Decoding the row descriptions:**
+- **"$\frac{dy}{dx} = g(x)h(y)$" (separable):** the right side factors into a piece that's purely a function of $x$ times a piece that's purely a function of $y$ — so you can physically separate the variables onto opposite sides of the equation and integrate each side independently.
+- **"$y' + P(x)y = Q(x)$" (linear, integrating factor):** $y$ and $y'$ each appear to the first power only (no $y^2$, $y\cdot y'$, etc.), with coefficients that are functions of $x$. Multiplying by the right "integrating factor" $\mu(x)$ makes the left side collapse into a single derivative $\frac{d}{dx}[\mu y]$.
+- **"$M\,dx + N\,dy = 0$ with $M_y = N_x$" (exact):** rewrite the ODE with all terms on one side as $M(x,y)\,dx + N(x,y)\,dy = 0$. If the partial derivative of $M$ with respect to $y$ equals the partial derivative of $N$ with respect to $x$, the equation is "exact" and comes from a single potential function $F(x,y)=C$ you can reconstruct directly.
+- **"Bernoulli":** looks like the linear case but with a $y^n$ tacked onto the right side, making it nonlinear. The substitution $v = y^{1-n}$ converts it back into a linear equation you can solve with an integrating factor.
+- **"IVP" (initial value problem):** an ODE plus starting conditions like $y(0)=1$. Laplace transforms are especially convenient here because they bake the initial conditions directly into the algebra instead of requiring you to solve for constants at the end.
+- **"System $\mathbf{x}' = A\mathbf{x}$":** several first-order ODEs coupled together, written in matrix form. The eigenvalues/eigenvectors of $A$ directly give the solution's building blocks (see 5.4 and its cross-reference to eigenvector mechanics in 6.5).
+
 ## Which Coordinate System (Calc 3)?
+
+*Applies to double/triple integrals over regions — pick the coordinate system that makes the region's boundaries (and thus the limits of integration) as simple as possible.*
 
 | Region shape | Best coordinates | Section |
 |---|---|---|
@@ -42,7 +64,11 @@
 | Cylinder, cone, disk in $xy$-plane | Cylindrical $(r,\theta,z)$ | 4.5 |
 | Sphere, cone from origin | Spherical $(\rho,\phi,\theta)$ | 4.5 |
 
+**Decoding the row descriptions:** Cylindrical is just polar coordinates $(r,\theta)$ in the $xy$-plane with an ordinary $z$ tacked on — use it whenever the region has circular symmetry around an axis. Spherical adds a second angle $\phi$ measured down from the $z$-axis and a single radial distance $\rho$ from the origin — use it whenever the region has symmetry around a *point* (a full or partial ball) rather than an axis.
+
 ## Which Vector Calculus Theorem?
+
+*These four theorems all do the same conceptual trick — trade an integral over a boundary (curve or surface) for an integral over the region it encloses, or vice versa. Which one applies depends on the dimension and whether the boundary is closed.*
 
 | Situation | Theorem | Section |
 |---|---|---|
@@ -51,20 +77,62 @@
 | Closed surface, want outward flux | Divergence | 4.6 |
 | Path-independent field, need work | FT for Line Integrals | 4.6 |
 
+**Decoding the row descriptions:**
+- **Green's:** for a closed loop that lives flat in the $xy$-plane, converts a line integral around the loop into a double integral over the flat region it bounds.
+- **Stokes':** the 3D generalization — converts a line integral around a closed curve (that may bend through space) into a surface integral of the curl over *any* surface whose edge is that curve. Useful for swapping a hard surface for an easier one with the same boundary.
+- **Divergence:** for a closed surface (one that fully encloses a solid, like a sphere or box — no edges), converts the outward flux integral into a triple integral of the divergence over the enclosed volume.
+- **"Path-independent field, need work":** if a vector field is conservative (curl-free, has a potential function $f$), the Fundamental Theorem for Line Integrals says the work done only depends on the start/end points, not the path — so you can skip the line integral entirely and just evaluate $f$ at the endpoints.
+
 ---
 
 # TABLE OF CONTENTS
 
 0. [Quick Lookup: Technique Selector](#quick-lookup-technique-selector)
 1. [Algebra](#subject-1-algebra)
+   - [1.1 Factoring and Algebraic Manipulation](#11-factoring-and-algebraic-manipulation)
+   - [1.2 Exponent and Logarithm Laws](#12-exponent-and-logarithm-laws)
+   - [1.3 Solving Equations](#13-solving-equations)
+   - [1.4 Inequalities](#14-inequalities)
+   - [1.5 Functions](#15-functions)
+   - [1.6 Trigonometry — Complete Reference](#16-trigonometry--complete-reference)
+   - [1.7 Complex Numbers](#17-complex-numbers)
 2. [Calculus 1 — Limits & Derivatives](#subject-2-calculus-1)
+   - [2.1 Limits](#21-limits)
+   - [2.2 Derivatives — All Rules and Techniques](#22-derivatives--all-rules-and-techniques)
+   - [2.3 Applications of Derivatives](#23-applications-of-derivatives)
 3. [Calculus 2 — Integration & Series](#subject-3-calculus-2)
-   - 3.4b Hyperbolic Functions
-   - 3.4c Numerical Integration (Trapezoidal, Simpson's)
+   - [3.1 Integration — Foundations](#31-integration--foundations)
+   - [3.2 Integration Techniques](#32-integration-techniques)
+   - [3.3 Improper Integrals](#33-improper-integrals)
+   - [3.4 Applications of Integration](#34-applications-of-integration)
+   - [3.4b Hyperbolic Functions](#34b-hyperbolic-functions)
+   - [3.4c Numerical Integration (Trapezoidal, Simpson's)](#34c-numerical-integration)
+   - [3.5 Sequences and Series](#35-sequences-and-series)
+   - [3.6 Parametric and Polar](#36-parametric-and-polar)
 4. [Calculus 3 — Multivariable](#subject-4-calculus-3)
-   - 4.5b Surface Integrals
+   - [4.1 Vectors and 3D Geometry](#41-vectors-and-3d-geometry)
+   - [4.2 Vector-Valued Functions](#42-vector-valued-functions)
+   - [4.3 Partial Derivatives](#43-partial-derivatives)
+   - [4.4 Multivariable Optimization](#44-multivariable-optimization)
+   - [4.5 Multiple Integrals](#45-multiple-integrals)
+   - [4.5b Surface Integrals](#45b-surface-integrals)
+   - [4.6 Vector Calculus](#46-vector-calculus)
 5. [Differential Equations](#subject-5-differential-equations)
+   - [5.1 First-Order ODEs](#51-first-order-odes)
+   - [5.2 Second-Order Linear ODEs with Constant Coefficients](#52-second-order-linear-odes-with-constant-coefficients)
+   - [5.3 Laplace Transforms](#53-laplace-transforms)
+   - [5.4 Systems of First-Order Linear ODEs](#54-systems-of-first-order-linear-odes)
+   - [5.5 Numerical Methods for ODEs](#55-numerical-methods-for-odes)
+   - [5.6 Qualitative Analysis](#56-qualitative-analysis)
 6. [Linear Algebra](#subject-6-linear-algebra)
+   - [6.1 Vectors and Vector Spaces](#61-vectors-and-vector-spaces)
+   - [6.2 Matrices and Operations](#62-matrices-and-operations)
+   - [6.3 Systems of Linear Equations](#63-systems-of-linear-equations)
+   - [6.4 Determinants](#64-determinants)
+   - [6.5 Eigenvalues and Eigenvectors](#65-eigenvalues-and-eigenvectors)
+   - [6.6 Orthogonality](#66-orthogonality)
+   - [6.7 Linear Transformations](#67-linear-transformations)
+   - [6.8 Matrix Decompositions](#68-matrix-decompositions)
 
 ---
 
