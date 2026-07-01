@@ -6,12 +6,63 @@
 
 ---
 
+# QUICK LOOKUP: TECHNIQUE SELECTOR
+
+## Which Integration Technique?
+
+| What you see | Technique | Section |
+|---|---|---|
+| $f(g(x))\cdot g'(x)$ — composite with its derivative present | u-substitution | 3.2 |
+| Product of unrelated functions (poly × trig, poly × exp, ln, arctan) | Integration by parts (LIATE) | 3.2 |
+| $\sin^m x\cos^n x$, $\tan^m x\sec^n x$ | Trig integrals | 3.2 |
+| $\sqrt{a^2-x^2}$, $\sqrt{a^2+x^2}$, $\sqrt{x^2-a^2}$ | Trig substitution | 3.2 |
+| Rational function (poly/poly), denominator factorable | Partial fractions (long divide first if deg↑ ≥ deg↓) | 1.1, 3.2 |
+| $e^{ax}\sin(bx)$ or similar cycling product | IBP twice (cycling) | 3.2 |
+| $\int\ln x$ or $\int\arctan x$ alone | IBP with $dv = dx$ | 3.2 |
+
+## Which ODE Method?
+
+| ODE form | Method | Section |
+|---|---|---|
+| $\frac{dy}{dx} = g(x)h(y)$ | Separable | 5.1 |
+| $y' + P(x)y = Q(x)$ | Integrating factor | 5.1 |
+| $M\,dx + N\,dy = 0$ with $M_y = N_x$ | Exact | 5.1 |
+| $y' + P(x)y = Q(x)y^n$ | Bernoulli substitution $v = y^{1-n}$ | 5.1 |
+| $ay'' + by' + cy = 0$ | Characteristic equation | 5.2 |
+| $ay'' + by' + cy = g(x)$, $g$ is poly/exp/trig | Undetermined coefficients | 5.2 |
+| $ay'' + by' + cy = g(x)$, general $g$ | Variation of parameters | 5.2 |
+| IVP, need exact solution from initial conditions | Laplace transform | 5.3 |
+| System $\mathbf{x}' = A\mathbf{x}$ | Eigenvalue method | 5.4 |
+
+## Which Coordinate System (Calc 3)?
+
+| Region shape | Best coordinates | Section |
+|---|---|---|
+| Rectangular box or general region | Cartesian | 4.5 |
+| Cylinder, cone, disk in $xy$-plane | Cylindrical $(r,\theta,z)$ | 4.5 |
+| Sphere, cone from origin | Spherical $(\rho,\phi,\theta)$ | 4.5 |
+
+## Which Vector Calculus Theorem?
+
+| Situation | Theorem | Section |
+|---|---|---|
+| 2D closed curve, want to convert to area integral | Green's | 4.6 |
+| 3D closed curve or want to swap surfaces | Stokes' | 4.6 |
+| Closed surface, want outward flux | Divergence | 4.6 |
+| Path-independent field, need work | FT for Line Integrals | 4.6 |
+
+---
+
 # TABLE OF CONTENTS
 
+0. [Quick Lookup: Technique Selector](#quick-lookup-technique-selector)
 1. [Algebra](#subject-1-algebra)
 2. [Calculus 1 — Limits & Derivatives](#subject-2-calculus-1)
 3. [Calculus 2 — Integration & Series](#subject-3-calculus-2)
+   - 3.4b Hyperbolic Functions
+   - 3.4c Numerical Integration (Trapezoidal, Simpson's)
 4. [Calculus 3 — Multivariable](#subject-4-calculus-3)
+   - 4.5b Surface Integrals
 5. [Differential Equations](#subject-5-differential-equations)
 6. [Linear Algebra](#subject-6-linear-algebra)
 
@@ -702,6 +753,8 @@ $= -\int(1-u^2)u^2\,du = -\int(u^2 - u^4)\,du = -\frac{u^3}{3} + \frac{u^5}{5} +
 **$\int \tan^m x \sec^n x\,dx$:**
 - $n$ even: save $\sec^2 x$, convert rest using $\sec^2 = 1 + \tan^2$, let $u = \tan x$
 - $m$ odd: save $\sec x\tan x$, convert rest using $\tan^2 = \sec^2 - 1$, let $u = \sec x$
+- $m$ even, $n$ odd: use $\tan^2 = \sec^2 - 1$ to reduce to powers of $\sec x$ alone; integrate via reduction formula or IBP
+- $\int\tan^m x\,dx$ alone ($n=0$): peel off $\tan^2 x = \sec^2 x - 1$ repeatedly. E.g., $\int\tan^3 x\,dx = \int\tan x(\sec^2 x-1)\,dx = \frac{\tan^2 x}{2} - \ln|\sec x| + C$
 
 ### Trigonometric Substitution
 
@@ -721,6 +774,8 @@ Back-sub: $\sin\theta = x/3$, so $\cos\theta = \sqrt{9-x^2}/3$, $\cot\theta = \s
 $= -\frac{\sqrt{9-x^2}}{x} - \arcsin\frac{x}{3} + C$
 
 **Completing the square first:** $\int \frac{dx}{\sqrt{x^2 + 4x + 5}} = \int \frac{dx}{\sqrt{(x+2)^2 + 1}}$, then $u = x+2$, trig sub $u = \tan\theta$.
+
+*Alternative for $\sqrt{x^2\pm a^2}$: hyperbolic substitution $x = a\sinh u$ often gives a cleaner result — see §3.4b.*
 
 > **Common Mistakes:**
 > - Forgetting $dx$ in terms of $d\theta$ after substitution
@@ -780,6 +835,64 @@ $$W = \int_a^b F(x)\,dx \quad \text{(force varying with position)}$$
 > **Common Mistakes:**
 > - Washer method: squaring $(R-r)$ instead of $R^2 - r^2$
 > - Shell method: forgetting the factor of $2\pi$ and the $x$ factor
+
+---
+
+## 3.4b Hyperbolic Functions
+
+*These appear in Laplace tables, trig substitution alternatives, and solutions to $y'' - k^2y = 0$. Cross-reference: Laplace pairs in §5.3.*
+
+### Definitions
+$$\sinh x = \frac{e^x - e^{-x}}{2}, \qquad \cosh x = \frac{e^x + e^{-x}}{2}, \qquad \tanh x = \frac{\sinh x}{\cosh x}$$
+
+### Key Identities
+$$\cosh^2 x - \sinh^2 x = 1$$
+$$1 - \tanh^2 x = \text{sech}^2 x$$
+$$\sinh(2x) = 2\sinh x\cosh x, \qquad \cosh(2x) = \cosh^2 x + \sinh^2 x$$
+
+### Derivatives and Integrals
+
+| $f(x)$ | $f'(x)$ | $\int f(x)\,dx$ |
+|---|---|---|
+| $\sinh x$ | $\cosh x$ | $\cosh x + C$ |
+| $\cosh x$ | $\sinh x$ | $\sinh x + C$ |
+| $\tanh x$ | $\text{sech}^2 x$ | $\ln(\cosh x) + C$ |
+| $\text{sech}\,x$ | $-\text{sech}\,x\tanh x$ | $\arctan(\sinh x) + C$ |
+
+### Inverse Hyperbolic (useful integral forms)
+$$\int \frac{dx}{\sqrt{x^2+a^2}} = \sinh^{-1}\!\left(\frac{x}{a}\right) + C = \ln\!\left(x + \sqrt{x^2+a^2}\right) + C$$
+$$\int \frac{dx}{\sqrt{x^2-a^2}} = \cosh^{-1}\!\left(\frac{x}{a}\right) + C = \ln\!\left(x + \sqrt{x^2-a^2}\right) + C \quad (x > a)$$
+
+> **Connection to trig sub:** $\int\frac{dx}{\sqrt{x^2+a^2}}$ can be done via $x = a\tan\theta$ (giving $\ln|\sec\theta+\tan\theta|$) or via $x = a\sinh u$ — both yield the same result in different form.
+
+---
+
+## 3.4c Numerical Integration
+
+*Used when an antiderivative doesn't exist in closed form (e.g., $\int e^{-x^2}dx$) or when $f$ is given as data.*
+
+### Trapezoidal Rule
+Divide $[a,b]$ into $n$ equal subintervals of width $h = (b-a)/n$, with nodes $x_0, x_1, \ldots, x_n$:
+$$\int_a^b f(x)\,dx \approx \frac{h}{2}\left[f(x_0) + 2f(x_1) + 2f(x_2) + \cdots + 2f(x_{n-1}) + f(x_n)\right]$$
+
+**Error bound:** $|E_T| \leq \frac{(b-a)^3}{12n^2}\max_{[a,b]}|f''(x)|$. Error is $O(h^2)$.
+
+### Simpson's Rule (requires $n$ even)
+$$\int_a^b f(x)\,dx \approx \frac{h}{3}\left[f(x_0) + 4f(x_1) + 2f(x_2) + 4f(x_3) + \cdots + 4f(x_{n-1}) + f(x_n)\right]$$
+
+Pattern of coefficients: $1,\;4,\;2,\;4,\;2,\;\ldots,\;4,\;1$
+
+**Error bound:** $|E_S| \leq \frac{(b-a)^5}{180n^4}\max_{[a,b]}|f^{(4)}(x)|$. Error is $O(h^4)$ — much better than Trapezoidal.
+
+**Example:** Approximate $\int_0^1 e^{x^2}\,dx$ with $n = 4$ (Simpson's):  
+$h = 0.25$, nodes: $x_0=0, x_1=0.25, x_2=0.5, x_3=0.75, x_4=1$  
+$f$ values: $1,\; e^{0.0625},\; e^{0.25},\; e^{0.5625},\; e$  
+$\approx \frac{0.25}{3}[1 + 4(1.0645) + 2(1.2840) + 4(1.7551) + 2.7183] \approx 1.4637$
+
+> **Common Mistakes:**
+> - Simpson's: using odd $n$ (requires even number of subintervals)
+> - Trapezoidal: doubling the endpoints (they get coefficient 1, not 2)
+> - Confusing $n$ (number of subintervals) with number of nodes ($n+1$)
 
 ---
 
@@ -1030,6 +1143,50 @@ $$\frac{\partial(x,y)}{\partial(u,v)} = \begin{vmatrix}x_u & x_v \\ y_u & y_v\en
 
 ---
 
+## 4.5b Surface Integrals
+
+*Required setup knowledge for Stokes' and Divergence theorems (§4.6).*
+
+### Scalar Surface Integral
+For surface $S$ parametrized by $\mathbf{r}(u,v)$ over region $D$:
+$$\iint_S f\,dS = \iint_D f(\mathbf{r}(u,v))\,|\mathbf{r}_u \times \mathbf{r}_v|\,dA$$
+
+The cross product $\mathbf{r}_u \times \mathbf{r}_v$ gives the normal vector; its magnitude is the area element.
+
+### Vector Surface Integral (Flux)
+$$\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_D \mathbf{F}(\mathbf{r}(u,v))\cdot(\mathbf{r}_u\times\mathbf{r}_v)\,dA$$
+
+Choose orientation: $\mathbf{r}_u\times\mathbf{r}_v$ points outward (or upward) — flip sign if needed.
+
+### Surface $z = g(x,y)$ (most common case)
+$$\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_D \mathbf{F}\cdot\langle -g_x, -g_y, 1\rangle\,dA \quad \text{(upward normal)}$$
+
+The area element: $dS = \sqrt{1 + g_x^2 + g_y^2}\,dA$
+
+**Example (flux):** Find the upward flux of $\mathbf{F} = \langle x, y, z\rangle$ through $z = 4 - x^2 - y^2$ over $z \geq 0$.
+
+$g_x = -2x$, $g_y = -2y$. Normal vector (upward): $\langle 2x, 2y, 1\rangle$
+
+$\mathbf{F}\cdot\langle 2x, 2y, 1\rangle = 2x^2 + 2y^2 + z = 2x^2 + 2y^2 + (4-x^2-y^2) = x^2 + y^2 + 4$
+
+Convert to polar ($z \geq 0 \Rightarrow r \leq 2$):
+$$\int_0^{2\pi}\int_0^2 (r^2+4)r\,dr\,d\theta = 2\pi\left[\frac{r^4}{4}+2r^2\right]_0^2 = 2\pi(4+8) = 24\pi$$
+
+### Common Parametrizations
+
+| Surface | Parametrization | Normal magnitude |
+|---|---|---|
+| Sphere $\rho = a$ | $\mathbf{r} = a\langle\sin\phi\cos\theta,\sin\phi\sin\theta,\cos\phi\rangle$ | $a^2\sin\phi$ |
+| Cylinder $r = a$, $0\leq z\leq h$ | $\mathbf{r} = \langle a\cos\theta, a\sin\theta, z\rangle$ | $a$ |
+| $z = g(x,y)$ | $\mathbf{r} = \langle x, y, g(x,y)\rangle$ | $\sqrt{1+g_x^2+g_y^2}$ |
+
+> **Common Mistakes:**
+> - Wrong orientation: check that your normal points in the required direction before integrating
+> - Forgetting to include $|\mathbf{r}_u\times\mathbf{r}_v|$ in scalar surface integrals
+> - On $z = g(x,y)$: the downward normal is $\langle g_x, g_y, -1\rangle$ (signs flip)
+
+---
+
 ## 4.6 Vector Calculus
 
 ### Line Integrals
@@ -1055,7 +1212,7 @@ $$\nabla\cdot\mathbf{F} = \text{div}\,\mathbf{F} = \frac{\partial P}{\partial x}
 **Green's Theorem** (2D, relates line integral around closed curve $C$ to double integral over enclosed region $D$):
 $$\oint_C P\,dx + Q\,dy = \iint_D\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)dA$$
 
-**Stokes' Theorem** (generalizes Green's to 3D surface $S$ with boundary $C$):
+**Stokes' Theorem** (generalizes Green's to 3D surface $S$ with boundary $C$; for setting up $d\mathbf{S}$, see §4.5b):
 $$\oint_C \mathbf{F}\cdot d\mathbf{r} = \iint_S (\nabla\times\mathbf{F})\cdot d\mathbf{S}$$
 
 **Divergence Theorem** (relates flux through closed surface $S$ to volume integral over enclosed $E$):
@@ -1241,9 +1398,7 @@ Take Laplace: $[s^2 Y - s\cdot 0 - 1] + 3[sY - 0] + 2Y = \frac{1}{s+1}$
 
 $(s^2 + 3s + 2)Y = 1 + \frac{1}{s+1} = \frac{s+2}{s+1}$
 
-$Y = \frac{s+2}{(s+1)(s+1)(s+2)} = \frac{1}{(s+1)^2}$
-
-Wait — let me redo: $(s+1)(s+2)Y = \frac{s+2}{s+1}$, so $Y = \frac{1}{(s+1)^2}$
+$(s+1)(s+2)Y = \frac{s+2}{s+1}$, so $Y = \frac{1}{(s+1)^2}$
 
 $\mathcal{L}^{-1}\left\{\frac{1}{(s+1)^2}\right\} = te^{-t}$
 
@@ -1272,6 +1427,8 @@ Convert to $\mathbf{x}' = A\mathbf{x}$ where $\mathbf{x} = \begin{pmatrix}x_1\\x
 $$\begin{pmatrix}x_1'\\x_2'\end{pmatrix} = \begin{pmatrix}0&1\\-q&-p\end{pmatrix}\begin{pmatrix}x_1\\x_2\end{pmatrix}$$
 
 ### Solution via Eigenvalues
+
+*Eigenvalue/eigenvector procedure: see §6.5. The three cases below (distinct real, repeated, complex) mirror the three cases for 2nd-order ODEs in §5.2.*
 
 Find eigenvalues from $\det(A - \lambda I) = 0$.
 
@@ -1332,11 +1489,14 @@ Global error $\sim O(h^4)$. Standard choice for most problems.
 **Phase line:** plot $f(y)$ vs. $y$; where $f > 0$, solutions increase; where $f < 0$, solutions decrease.
 
 **Example:** $dy/dt = y(1-y)(2-y)$  
-Equilibria: $y = 0, 1, 2$. Check signs of $f$ in intervals:
-- $y < 0$: $(-)(+)(+) < 0$ → decreasing
-- $0 < y < 1$: $(+)(+)(-) < 0$ → wait: $(+)(1-y > 0)(2-y > 0) > 0$ → increasing
-- $1 < y < 2$: $(+)(-)(+) < 0$ → decreasing
-- $y > 2$: $(+)(-)(+) < 0$ → wait: $(+)(\text{neg})(\text{pos}) < 0$ → no: check sign carefully. $y > 2$: $y(+)$, $1-y(-)$, $2-y(-)$: $(+)(-)(-) > 0$ → increasing.
+Equilibria: $y = 0, 1, 2$. Check signs of $f$ in each interval:
+
+| Interval | $y$ | $1-y$ | $2-y$ | $f$ | Direction |
+|---|---|---|---|---|---|
+| $y < 0$ | $-$ | $+$ | $+$ | $-$ | decreasing |
+| $0 < y < 1$ | $+$ | $+$ | $+$ | $+$ | increasing |
+| $1 < y < 2$ | $+$ | $-$ | $+$ | $-$ | decreasing |
+| $y > 2$ | $+$ | $-$ | $-$ | $+$ | increasing |
 
 Result: $y=0$ unstable, $y=1$ stable, $y=2$ unstable.
 
@@ -1468,6 +1628,8 @@ $\det(A-\lambda I) = (3-\lambda)^2 - 1 = \lambda^2 - 6\lambda + 8 = (\lambda-4)(
 $\lambda_1 = 4$: $(A-4I) = \begin{pmatrix}-1&1\\1&-1\end{pmatrix} \to \mathbf{v}_1 = \begin{pmatrix}1\\1\end{pmatrix}$
 
 $\lambda_2 = 2$: $(A-2I) = \begin{pmatrix}1&1\\1&1\end{pmatrix} \to \mathbf{v}_2 = \begin{pmatrix}1\\-1\end{pmatrix}$
+
+*Eigenvalues drive the solution to systems of ODEs — see §5.4 for the direct connection.*
 
 ### Algebraic vs. Geometric Multiplicity
 - **Algebraic multiplicity:** multiplicity of $\lambda$ as a root of the characteristic polynomial
